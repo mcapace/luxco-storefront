@@ -1,0 +1,64 @@
+{
+  "current": {
+    "color_primary": "#1a1a1a",
+    "color_secondary": "#c9a227",
+    "color_accent": "#8b5a2b",
+    "color_background": "#ffffff",
+    "color_background_secondary": "#f8f6f2",
+    "color_text": "#1a1a1a",
+    "color_text_secondary": "#666666",
+    "font_body_scale": 100,
+    "age_verification_enabled": true,
+    "age_verification_title": "Age Verification Required",
+    "age_verification_message": "You must be 21 years or older to enter this site. Please confirm your age to continue.",
+    "age_verification_confirm": "I am 21 or older",
+    "age_verification_deny": "I am under 21",
+    "cart_type": "drawer",
+    "show_cart_note": true,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {},
+        "blocks": {
+          "menu_item_1": {
+            "type": "menu_item",
+            "settings": {
+              "label": "Shop",
+              "link": "shopify://collections/all"
+            }
+          },
+          "menu_item_2": {
+            "type": "menu_item",
+            "settings": {
+              "label": "Our Story",
+              "link": ""
+            }
+          },
+          "menu_item_3": {
+            "type": "menu_item",
+            "settings": {
+              "label": "Distilleries",
+              "link": ""
+            }
+          },
+          "menu_item_4": {
+            "type": "menu_item",
+            "settings": {
+              "label": "Contact",
+              "link": ""
+            }
+          }
+        },
+        "block_order": ["menu_item_1", "menu_item_2", "menu_item_3", "menu_item_4"]
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_title": "Yellowstone",
+          "footer_description": "Crafted in the heart of Kentucky, our bourbon represents generations of distilling excellence and unwavering commitment to quality.",
+          "disclaimer": "Please drink responsibly. You must be 21 years or older to purchase."
+        }
+      }
+    }
+  }
+}

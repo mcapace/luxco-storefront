@@ -1,0 +1,441 @@
+{%- style -%}
+  .featured-products {
+    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .featured-products .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .featured-products .section-eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .featured-products .section-title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .featured-products .divider {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .featured-products .section-description {
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: var(--color-bg-primary);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-card-badge {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    background-color: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    z-index: 2;
+  }
+
+  .product-card-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .product-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .product-card:hover .product-card-image img {
+    transform: scale(1.05);
+  }
+
+  .product-card-content {
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .product-card-category {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .product-card-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .product-card-title a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .product-card-title a:hover {
+    color: var(--color-secondary);
+  }
+
+  .product-card-details {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .product-card-specs {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid #eee;
+  }
+
+  .product-spec {
+    text-align: center;
+  }
+
+  .product-spec-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .product-spec-value {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    color: var(--color-secondary);
+    margin-top: 4px;
+  }
+
+  .product-card-price {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .product-card-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .product-card-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+  }
+
+  .product-card-actions .btn {
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .section-cta {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+  }
+
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .product-card-specs {
+      flex-wrap: wrap;
+    }
+
+    .product-card-actions {
+      flex-direction: column;
+    }
+
+    .product-card-actions .btn {
+      max-width: none;
+    }
+  }
+{%- endstyle -%}
+
+<section class="featured-products" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="section-header text-center">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="section-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <div class="divider"></div>
+      {%- if section.settings.description != blank -%}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="products-grid">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'product' -%}
+            <div class="product-card" {{ block.shopify_attributes }}>
+              {%- if block.settings.badge != blank -%}
+                <span class="product-card-badge">{{ block.settings.badge }}</span>
+              {%- endif -%}
+
+              <div class="product-card-image">
+                {%- if block.settings.product_image != blank -%}
+                  {{ block.settings.product_image | image_url: width: 800 | image_tag:
+                    loading: 'lazy',
+                    sizes: '(max-width: 768px) 100vw, 50vw',
+                    widths: '375, 550, 750, 800',
+                    alt: block.settings.product_title
+                  }}
+                {%- elsif block.settings.product != blank -%}
+                  {{ block.settings.product.featured_image | image_url: width: 800 | image_tag:
+                    loading: 'lazy',
+                    sizes: '(max-width: 768px) 100vw, 50vw',
+                    widths: '375, 550, 750, 800',
+                    alt: block.settings.product.title
+                  }}
+                {%- else -%}
+                  <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3d2914 0%, #1a1a1a 100%);"></div>
+                {%- endif -%}
+              </div>
+
+              <div class="product-card-content">
+                {%- if block.settings.category != blank -%}
+                  <p class="product-card-category">{{ block.settings.category }}</p>
+                {%- endif -%}
+
+                <h3 class="product-card-title">
+                  {%- if block.settings.product != blank -%}
+                    <a href="{{ block.settings.product.url }}">{{ block.settings.product.title }}</a>
+                  {%- elsif block.settings.product_link != blank -%}
+                    <a href="{{ block.settings.product_link }}">{{ block.settings.product_title }}</a>
+                  {%- else -%}
+                    {{ block.settings.product_title }}
+                  {%- endif -%}
+                </h3>
+
+                <div class="product-card-specs">
+                  {%- if block.settings.age != blank -%}
+                    <div class="product-spec">
+                      <span class="product-spec-label">Age</span>
+                      <span class="product-spec-value">{{ block.settings.age }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.proof != blank -%}
+                    <div class="product-spec">
+                      <span class="product-spec-label">Proof</span>
+                      <span class="product-spec-value">{{ block.settings.proof }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                {%- if block.settings.description != blank -%}
+                  <p class="product-card-description">{{ block.settings.description }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.product != blank -%}
+                  <p class="product-card-price">{{ block.settings.product.price | money }}</p>
+                {%- elsif block.settings.price != blank -%}
+                  <p class="product-card-price">{{ block.settings.price }}</p>
+                {%- endif -%}
+
+                <div class="product-card-actions">
+                  {%- if block.settings.product != blank -%}
+                    <a href="{{ block.settings.product.url }}" class="btn btn-primary">View Details</a>
+                  {%- elsif block.settings.product_link != blank -%}
+                    <a href="{{ block.settings.product_link }}" class="btn btn-primary">View Details</a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_view_all and section.settings.collection != blank -%}
+      <div class="section-cta">
+        <a href="{{ section.settings.collection.url }}" class="btn btn-outline">
+          {{ section.settings.view_all_text | default: 'View All Products' }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "tag": "section",
+  "class": "featured-products-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Premium Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Whiskeys"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover our exceptional collection of handcrafted bourbon and whiskey, each bottle a testament to Kentucky's finest distilling traditions."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All Button",
+      "default": true
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Products"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Custom Product Info (if no product selected)"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Title",
+          "default": "Yellowstone Limited Edition"
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product Link"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Kentucky Straight Bourbon"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "Limited Edition"
+        },
+        {
+          "type": "text",
+          "id": "age",
+          "label": "Age",
+          "default": "10 Years"
+        },
+        {
+          "type": "text",
+          "id": "proof",
+          "label": "Proof",
+          "default": "105"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Short Description"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price (if no product selected)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "product_title": "Yellowstone Limited Edition 2025",
+            "category": "Kentucky Straight Bourbon",
+            "badge": "10th Anniversary",
+            "age": "10 Years",
+            "proof": "105",
+            "description": "A commemorative blend from Indiana and Kentucky distilleries, featuring aromas of vanilla, oak, and citrus."
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "product_title": "Lux Row Small Batch PX Sherry Cask Finished",
+            "category": "Ryed Kentucky Straight Bourbon",
+            "badge": "Small Batch",
+            "proof": "112",
+            "description": "Expertly blended and finished in PX Sherry casks for a uniquely elevated flavor profile."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,403 @@
+/* ============================================
+   LUXCO YELLOWSTONE STOREFRONT - BASE STYLES
+   Premium Whisky Brand Theme
+   ============================================ */
+
+:root {
+  /* Brand Colors - Yellowstone Premium */
+  --color-primary: #1a1a1a;
+  --color-secondary: #c9a227;
+  --color-accent: #8b5a2b;
+  --color-gold: #d4af37;
+  --color-cream: #f5f0e6;
+  --color-charcoal: #2d2d2d;
+  --color-deep-brown: #3d2914;
+
+  /* Text Colors */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-text-light: #ffffff;
+  --color-text-muted: #888888;
+
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f6f2;
+  --color-bg-dark: #1a1a1a;
+  --color-bg-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 5rem;
+
+  /* Typography */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Lato', sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+  --font-size-5xl: 4rem;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  /* Borders */
+  --border-width: 1px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Container */
+  --container-max-width: 1400px;
+  --container-padding: 1.5rem;
+
+  /* Header */
+  --header-height: 80px;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-md); }
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-gold { color: var(--color-gold); }
+.text-cream { color: var(--color-cream); }
+
+/* Skip Link */
+.skip-to-content-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 9999;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+.skip-to-content-link:focus {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Buttons */
+.button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: var(--color-bg-dark);
+  border-color: var(--color-secondary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-bg-dark);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-light);
+  border-color: var(--color-cream);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-cream);
+  color: var(--color-bg-dark);
+}
+
+.btn-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-color: var(--color-bg-dark);
+}
+
+.btn-dark:hover {
+  background-color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-bg-dark);
+}
+
+/* Form Elements */
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  padding: 0.875rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-sm);
+  width: 100%;
+  transition: border-color var(--transition-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Section Styles */
+.section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Decorative Elements */
+.divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-secondary);
+  margin: var(--spacing-md) auto;
+}
+
+.divider-gold {
+  background-color: var(--color-gold);
+}
+
+/* Main Content */
+.main-content {
+  min-height: 50vh;
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 992px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 2.25rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-2xl: 1.5rem;
+    --spacing-xxl: 3rem;
+  }
+
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Age Gate Styles */
+.age-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-overlay);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.age-gate-modal {
+  background: var(--color-bg-primary);
+  padding: var(--spacing-xl);
+  text-align: center;
+  max-width: 500px;
+  margin: var(--spacing-md);
+}
+
+.age-gate-modal h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.age-gate-modal p {
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-secondary);
+}
+
+.age-gate-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-slow) ease forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--transition-slow) ease forwards;
+}
+
+/* Page-specific body classes */
+.template-index .main-content {
+  padding-top: 0;
+}
+
+.template-product .main-content {
+  padding-top: var(--spacing-xl);
+}

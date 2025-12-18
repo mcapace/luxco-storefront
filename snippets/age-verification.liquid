@@ -1,0 +1,47 @@
+{%- comment -%}
+  Age verification modal for alcohol products
+{%- endcomment -%}
+
+<div class="age-gate-overlay" id="age-gate" style="display: none;">
+  <div class="age-gate-modal">
+    <h2>{{ settings.age_verification_title | default: 'Age Verification Required' }}</h2>
+    <p>{{ settings.age_verification_message | default: 'You must be 21 years or older to enter this site. Please confirm your age to continue.' }}</p>
+    <div class="age-gate-buttons">
+      <button type="button" class="btn btn-primary" data-age-confirm>
+        {{ settings.age_verification_confirm | default: 'I am 21 or older' }}
+      </button>
+      <button type="button" class="btn btn-outline" data-age-deny>
+        {{ settings.age_verification_deny | default: 'I am under 21' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const ageGate = document.getElementById('age-gate');
+    const verified = localStorage.getItem('age_verified');
+
+    if (!verified && ageGate) {
+      ageGate.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      const confirmBtn = ageGate.querySelector('[data-age-confirm]');
+      const denyBtn = ageGate.querySelector('[data-age-deny]');
+
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', function() {
+          localStorage.setItem('age_verified', 'true');
+          ageGate.style.display = 'none';
+          document.body.style.overflow = '';
+        });
+      }
+
+      if (denyBtn) {
+        denyBtn.addEventListener('click', function() {
+          window.location.href = 'https://www.responsibility.org/';
+        });
+      }
+    }
+  })();
+</script>

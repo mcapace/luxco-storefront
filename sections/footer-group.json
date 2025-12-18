@@ -1,0 +1,15 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "footer_title": "Yellowstone",
+        "footer_description": "Crafted in the heart of Kentucky, our bourbon represents generations of distilling excellence and unwavering commitment to quality.",
+        "disclaimer": "Please drink responsibly. You must be 21 years or older to purchase."
+      }
+    }
+  },
+  "order": ["footer"]
+}

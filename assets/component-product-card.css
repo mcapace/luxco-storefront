@@ -1,0 +1,202 @@
+/* ============================================
+   PRODUCT CARD COMPONENT STYLES
+   ============================================ */
+
+.product-card {
+  background: var(--color-bg-primary);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  background-color: var(--color-gold);
+  color: var(--color-bg-dark);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  z-index: 2;
+}
+
+.product-card-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-card-image img {
+  transform: scale(1.05);
+}
+
+.product-card-content {
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.product-card-category {
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.product-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+.product-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-card-title a:hover {
+  color: var(--color-secondary);
+}
+
+.product-card-specs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid #eee;
+}
+
+.product-spec {
+  text-align: center;
+}
+
+.product-spec-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.product-spec-value {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-md);
+  color: var(--color-secondary);
+  margin-top: 4px;
+}
+
+.product-card-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
+}
+
+.product-card-price {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.product-card-price .compare-at-price {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  margin-left: var(--spacing-xs);
+}
+
+.product-card-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+.product-card-actions .btn {
+  flex: 1;
+  max-width: 200px;
+}
+
+/* Collection Grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 992px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-specs {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .product-card-actions {
+    flex-direction: column;
+  }
+
+  .product-card-actions .btn {
+    max-width: none;
+  }
+}
+
+/* Product Card Hover Overlay */
+.product-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all var(--transition-normal);
+}
+
+.product-card:hover .product-card-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.product-card-overlay .btn {
+  transform: translateY(20px);
+  transition: transform var(--transition-normal);
+}
+
+.product-card:hover .product-card-overlay .btn {
+  transform: translateY(0);
+}

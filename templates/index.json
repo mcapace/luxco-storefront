@@ -1,0 +1,90 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "hero_eyebrow": "The Luxco Experience",
+        "hero_title": "Yellowstone Bourbon",
+        "hero_subtitle": "Discover our handcrafted collection of premium Kentucky bourbon, distilled with tradition and aged to perfection.",
+        "button_primary_label": "Shop Collection",
+        "button_primary_link": "shopify://collections/all",
+        "button_secondary_label": "Our Story",
+        "button_secondary_link": "",
+        "show_scroll_indicator": true
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Premium Collection",
+        "title": "Featured Whiskeys",
+        "description": "Discover our exceptional collection of handcrafted bourbon and whiskey, each bottle a testament to Kentucky's finest distilling traditions.",
+        "show_view_all": true,
+        "view_all_text": "View All Products"
+      },
+      "blocks": {
+        "product-1": {
+          "type": "product",
+          "settings": {
+            "product_title": "Yellowstone Limited Edition 2025",
+            "category": "Kentucky Straight Bourbon",
+            "badge": "10th Anniversary",
+            "age": "10 Years",
+            "proof": "105",
+            "description": "Founder and Master Distiller Stephen Beam and the team at Limestone Branch Distillery collaborated with the blending team at Ross & Squibb Distillery to create this commemorative 10th anniversary release. For the first time, barrels from Indiana and Kentucky distilleries were blended for this unique expression featuring aromas of vanilla, oak, and citrus.",
+            "product_link": "https://store.whiskyadvocate.com/products/yellowstone-10-year-old-limited-edition-2025-release"
+          }
+        },
+        "product-2": {
+          "type": "product",
+          "settings": {
+            "product_title": "Lux Row Small Batch PX Sherry Cask Finished",
+            "category": "Ryed Kentucky Straight Bourbon",
+            "badge": "Small Batch",
+            "proof": "112",
+            "description": "Extraordinary handpicked barrels featuring \"ryed\" Kentucky Straight Bourbon Whiskey. Expertly blended in small batches and finished in PX Sherry casks for a uniquely elevated flavor featuring dried figs, dates, grape syrup, candied fruit, spice, roasted coffee, and dark chocolate."
+          }
+        }
+      },
+      "block_order": ["product-1", "product-2"]
+    },
+    "about-distillery": {
+      "type": "about-distillery",
+      "settings": {
+        "eyebrow": "Our Heritage",
+        "title": "A Legacy of Excellence",
+        "text": "<p>Founded on generations of Kentucky bourbon tradition, our distillery combines time-honored techniques with innovative craftsmanship. Every bottle we produce tells a story of dedication, patience, and an unwavering commitment to quality.</p><p>From the limestone-filtered water to the hand-selected grains, each element is carefully chosen to create exceptional spirits worthy of the Yellowstone name.</p>",
+        "button_label": "Learn Our Story",
+        "button_link": ""
+      },
+      "blocks": {
+        "feature-1": {
+          "type": "feature",
+          "settings": {
+            "text": "Hand-selected barrels"
+          }
+        },
+        "feature-2": {
+          "type": "feature",
+          "settings": {
+            "text": "Kentucky limestone water"
+          }
+        },
+        "feature-3": {
+          "type": "feature",
+          "settings": {
+            "text": "Traditional copper pot stills"
+          }
+        },
+        "feature-4": {
+          "type": "feature",
+          "settings": {
+            "text": "Aged to perfection"
+          }
+        }
+      },
+      "block_order": ["feature-1", "feature-2", "feature-3", "feature-4"]
+    }
+  },
+  "order": ["hero", "featured-products", "about-distillery"]
+}
