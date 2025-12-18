@@ -1,0 +1,113 @@
+{
+  "general": {
+    "shop_name": "Yellowstone Bourbon",
+    "continue_shopping": "Continue shopping",
+    "page_not_found": "Page not found",
+    "search": "Search",
+    "no_results": "No results found"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "menu": "Menu",
+    "cart": "Cart",
+    "search": "Search",
+    "account": "Account"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "view_details": "View Details",
+      "quantity": "Quantity",
+      "price": "Price",
+      "compare_at_price": "Compare at",
+      "sale": "Sale",
+      "new": "New",
+      "limited_edition": "Limited Edition"
+    },
+    "specifications": {
+      "age": "Age",
+      "proof": "Proof",
+      "volume": "Volume",
+      "distillery": "Distillery"
+    },
+    "tasting_notes": {
+      "title": "Tasting Notes",
+      "aroma": "Aroma",
+      "taste": "Taste",
+      "finish": "Finish"
+    }
+  },
+  "collections": {
+    "title": "Collections",
+    "all_products": "All Products",
+    "no_products": "No products found in this collection",
+    "filter_by": "Filter by",
+    "sort_by": "Sort by",
+    "sort_options": {
+      "featured": "Featured",
+      "best_selling": "Best Selling",
+      "alphabetically_a_z": "Alphabetically, A-Z",
+      "alphabetically_z_a": "Alphabetically, Z-A",
+      "price_low_high": "Price, low to high",
+      "price_high_low": "Price, high to low",
+      "date_old_new": "Date, old to new",
+      "date_new_old": "Date, new to old"
+    }
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "note": "Order notes",
+    "update": "Update"
+  },
+  "customer": {
+    "account": {
+      "title": "Account",
+      "orders": "Order History",
+      "addresses": "Addresses",
+      "details": "Account Details"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot password?",
+      "sign_in": "Sign In",
+      "create_account": "Create Account"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    }
+  },
+  "newsletter": {
+    "title": "Stay Connected",
+    "description": "Subscribe to receive updates, access to exclusive deals, and more.",
+    "email_placeholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "success": "Thank you for subscribing!"
+  },
+  "footer": {
+    "disclaimer": "Please drink responsibly. You must be 21 years or older to purchase.",
+    "copyright": "All rights reserved.",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service"
+  },
+  "age_verification": {
+    "title": "Age Verification Required",
+    "message": "You must be 21 years or older to enter this site. Please confirm your age to continue.",
+    "confirm": "I am 21 or older",
+    "deny": "I am under 21"
+  }
+}
