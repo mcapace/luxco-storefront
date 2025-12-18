@@ -1,0 +1,181 @@
+<style>
+  .ystone-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+  }
+  .ystone-hero * { box-sizing: border-box; }
+  .ystone-hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+  .ystone-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ystone-hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    z-index: 2;
+  }
+  .ystone-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 30px;
+  }
+  .ystone-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 20px;
+  }
+  .ystone-hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: #f5f0e6;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .ystone-hero-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+  .ystone-hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .ystone-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .ystone-btn-primary {
+    background-color: #c9a227;
+    color: #1a1a1a;
+    border-color: #c9a227;
+  }
+  .ystone-btn-primary:hover {
+    background-color: #d4af37;
+    border-color: #d4af37;
+  }
+  .ystone-btn-secondary {
+    background-color: transparent;
+    color: #f5f0e6;
+    border-color: #f5f0e6;
+  }
+  .ystone-btn-secondary:hover {
+    background-color: #f5f0e6;
+    color: #1a1a1a;
+  }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<section class="ystone-hero">
+  <div class="ystone-hero-bg">
+    <img src="{{ 'yellowstone-hero.jpg' | asset_url }}" alt="{{ section.settings.hero_title }}">
+  </div>
+  <div class="ystone-hero-overlay"></div>
+  <div class="ystone-hero-content">
+    {% if section.settings.hero_eyebrow != blank %}
+      <p class="ystone-hero-eyebrow">{{ section.settings.hero_eyebrow }}</p>
+    {% endif %}
+    <h1 class="ystone-hero-title">{{ section.settings.hero_title }}</h1>
+    {% if section.settings.hero_subtitle != blank %}
+      <p class="ystone-hero-subtitle">{{ section.settings.hero_subtitle }}</p>
+    {% endif %}
+    <div class="ystone-hero-buttons">
+      {% if section.settings.button_primary_label != blank %}
+        <a href="{{ section.settings.button_primary_link }}" class="ystone-btn ystone-btn-primary">
+          {{ section.settings.button_primary_label }}
+        </a>
+      {% endif %}
+      {% if section.settings.button_secondary_label != blank %}
+        <a href="{{ section.settings.button_secondary_link }}" class="ystone-btn ystone-btn-secondary">
+          {{ section.settings.button_secondary_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Yellowstone Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Luxco Experience"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "Yellowstone Bourbon"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Subtitle",
+      "default": "Discover our handcrafted collection of premium Kentucky bourbon, distilled with tradition and aged to perfection."
+    },
+    {
+      "type": "text",
+      "id": "button_primary_label",
+      "label": "Primary Button Label",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Yellowstone Hero"
+    }
+  ]
+}
+{% endschema %}

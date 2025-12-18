@@ -1,0 +1,315 @@
+<style>
+  .ystone-products {
+    background-color: #f8f6f2;
+    padding: 80px 0;
+    font-family: 'Lato', sans-serif;
+  }
+  .ystone-products * { box-sizing: border-box; }
+  .ystone-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .ystone-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .ystone-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a227;
+    margin-bottom: 10px;
+  }
+  .ystone-title {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    color: #1a1a1a;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .ystone-divider {
+    width: 60px;
+    height: 2px;
+    background-color: #c9a227;
+    margin: 0 auto 20px;
+  }
+  .ystone-description {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .ystone-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  @media (max-width: 768px) {
+    .ystone-grid { grid-template-columns: 1fr; }
+  }
+  .ystone-card {
+    background: #fff;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .ystone-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+  .ystone-card-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #d4af37;
+    color: #1a1a1a;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 15px;
+    z-index: 2;
+  }
+  .ystone-card-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+  .ystone-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .ystone-card:hover .ystone-card-image img {
+    transform: scale(1.05);
+  }
+  .ystone-card-content {
+    padding: 30px;
+    text-align: center;
+  }
+  .ystone-card-category {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #c9a227;
+    margin-bottom: 8px;
+  }
+  .ystone-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: #1a1a1a;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .ystone-card-specs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .ystone-spec-label {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .ystone-spec-value {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: #c9a227;
+    margin-top: 4px;
+  }
+  .ystone-card-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .ystone-card-btn {
+    display: inline-block;
+    padding: 14px 35px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #c9a227;
+    color: #1a1a1a;
+    border: 2px solid #c9a227;
+    transition: all 0.3s;
+  }
+  .ystone-card-btn:hover {
+    background-color: #d4af37;
+    border-color: #d4af37;
+  }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<section class="ystone-products">
+  <div class="ystone-container">
+    <div class="ystone-header">
+      <p class="ystone-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="ystone-title">{{ section.settings.title }}</h2>
+      <div class="ystone-divider"></div>
+      <p class="ystone-description">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="ystone-grid">
+      {% for block in section.blocks %}
+        <div class="ystone-card" {{ block.shopify_attributes }}>
+          {% if block.settings.badge != blank %}
+            <span class="ystone-card-badge">{{ block.settings.badge }}</span>
+          {% endif %}
+
+          <div class="ystone-card-image">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
+            {% else %}
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#3d2914,#1a1a1a);"></div>
+            {% endif %}
+          </div>
+
+          <div class="ystone-card-content">
+            <p class="ystone-card-category">{{ block.settings.category }}</p>
+            <h3 class="ystone-card-title">{{ block.settings.title }}</h3>
+
+            <div class="ystone-card-specs">
+              {% if block.settings.age != blank %}
+                <div>
+                  <div class="ystone-spec-label">Age</div>
+                  <div class="ystone-spec-value">{{ block.settings.age }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.proof != blank %}
+                <div>
+                  <div class="ystone-spec-label">Proof</div>
+                  <div class="ystone-spec-value">{{ block.settings.proof }}</div>
+                </div>
+              {% endif %}
+            </div>
+
+            <p class="ystone-card-desc">{{ block.settings.description }}</p>
+
+            {% if block.settings.button_link != blank %}
+              <a href="{{ block.settings.button_link }}" class="ystone-card-btn">View Details</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Yellowstone Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Premium Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Whiskeys"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover our exceptional collection of handcrafted bourbon and whiskey."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "Yellowstone Limited Edition"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Kentucky Straight Bourbon"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Limited Edition"
+        },
+        {
+          "type": "text",
+          "id": "age",
+          "label": "Age"
+        },
+        {
+          "type": "text",
+          "id": "proof",
+          "label": "Proof"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Yellowstone Products",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "title": "Yellowstone Limited Edition 2025",
+            "category": "Kentucky Straight Bourbon",
+            "badge": "10th Anniversary",
+            "age": "10 Years",
+            "proof": "105",
+            "description": "A commemorative blend from Indiana and Kentucky distilleries featuring aromas of vanilla, oak, and citrus with flavors of rich caramel, toffee, and stonefruit."
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "Lux Row Small Batch PX Sherry Cask",
+            "category": "Ryed Kentucky Straight Bourbon",
+            "badge": "Small Batch",
+            "proof": "112",
+            "description": "Finished in PX Sherry casks with an aromatic bouquet of dried figs and dates, decadent flavors of grape syrup and candied fruit."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
